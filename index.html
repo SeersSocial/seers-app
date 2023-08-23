@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/jpeg" href="/frontend/assets/logo.jpeg" />
+  <link rel="manifest" href="/frontend/assets/manifest.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seers</title>
+</head>
+
+<body style="margin: 0px;">
+  <div id="root"></div>
+  <script type="module">
+    /**
+     * @dfinity/agent requires this. Can be removed once it's fixed
+     */
+    import { Buffer } from "buffer"
+
+    window.global = window
+    window.Buffer = Buffer
+
+  </script>
+
+  <script type="module" src="/frontend/main.ts"></script>
+</body>
+
+</html>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WWMXZRQKRV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-WWMXZRQKRV');
+</script>

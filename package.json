@@ -1,0 +1,53 @@
+{
+  "name": "seer",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "prebuild": "npm run copy:types",
+    "prestart": "npm run copy:types",
+    "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets/' --exclude='idl/' --exclude='*.wasm' --delete declarations"
+  },
+  "dependencies": {
+    "@dfinity/agent": "0.14.0",
+    "@dfinity/auth-client": "0.14.0",
+    "@dfinity/authentication": "0.14.0",
+    "@dfinity/candid": "0.14.0",
+    "@dfinity/identity": "0.14.0",
+    "@dfinity/principal": "0.14.0",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@popperjs/core": "^2.11.7",
+    "chart.js": "^3.7.1",
+    "classnames": "^2.3.2",
+    "flowbite": "^1.6.5",
+    "flowbite-svelte": "^0.29.13",
+    "linkify-html": "^4.0.0",
+    "linkify-it": "^4.0.1",
+    "linkify-plugin-hashtag": "^4.0.0",
+    "linkify-plugin-mention": "^4.0.0",
+    "linkifyjs": "^4.0.0",
+    "mathjax": "^3.2.2",
+    "svelte-fa": "^2.4.0",
+    "svelte-loading-spinners": "^0.3.4",
+    "svelte-markdown": "^0.2.2",
+    "svelte-meta-tags": "^2.6.3",
+    "svelte-navigator": "^3.1.5",
+    "svelte-seo": "^1.4.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "next",
+    "@types/node": "^16.11.6",
+    "autoprefixer": "^10.4.7",
+    "buffer": "^6.0.3",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "svelte": "^3.42.5",
+    "svelte-preprocess": "^5.0.3",
+    "tailwindcss": "^3.1.5",
+    "typescript": "^4.4.3",
+    "vite": "^2.5.7"
+  }
+}

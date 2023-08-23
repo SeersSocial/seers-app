@@ -1,0 +1,15 @@
+{
+    "background_color": "black",
+    "description": "Seers web3 decentralised social network similar to Twitter",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "frontend/assets/logo.jpeg",
+        "sizes": "192x192",
+        "type": "image/jpeg"
+      }
+    ],
+    "name": "Seers: web3 social network",
+    "short_name": "Seers",
+    "start_url": "/"
+  }

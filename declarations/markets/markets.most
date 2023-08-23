@@ -1,0 +1,486 @@
+// Version: 1.0.0
+type Asset = {content_type : Text; encoding : AssetEncoding};
+type AssetEncoding =
+  {
+    certified : Bool;
+    content_chunks : [Blob];
+    modified : Int;
+    total_length : Nat
+  };
+type Balance = {btc : Nat64; cycles : Nat64; icp : Nat64; seers : Nat64};
+type Bettor = {id : Text; outcome : Nat; spent : Nat64};
+type BrierScore = {createdAt : Time; score : Float};
+type Chunk = {batch_name : Text; content : Blob};
+type CollateralType = {#btc; #cycles; #icp; #seers};
+type CommentStable =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    id : Nat32;
+    likes : [Like];
+    modifiedAt : Time
+  };
+type DepositAddrs = {btc : Text; cycles : Text; icp : Subaccount};
+type Followee = {createdAt : Time; user : Text};
+type Followee0 = {createdAt : Time; userdata : UserData};
+type FolloweeStable = {#v0 : Followee0};
+type Follower = {createdAt : Time; user : Text};
+type Follower0 = {createdAt : Time; userdata : UserData};
+type FollowerStable = {#v0 : Follower0};
+type Forecast = [Float];
+type HistPoint = {createdAt : Time; liquidity : Nat; probabilities : [Nat]};
+type Like = {author : UserData; createdAt : Time};
+type MarketCategory =
+  {
+    #any;
+    #business;
+    #crypto;
+    #dfinity;
+    #entertainment;
+    #financial;
+    #politics;
+    #science;
+    #seers;
+    #self;
+    #sports
+  };
+type MarketStable =
+  {
+    author : Text;
+    bettors : [Bettor];
+    category : MarketCategory;
+    collateralType : CollateralType;
+    comments : [CommentStable];
+    createdAt : Time;
+    description : Text;
+    endDate : Time;
+    forecasts : [Forecast];
+    histPrices : [HistPoint];
+    id : Nat32;
+    imageUrl : Text;
+    images : [Text];
+    k : Nat;
+    labels : [Text];
+    liquidity : Nat;
+    modifiedAt : Time;
+    probabilities : [Nat];
+    providers : [Text];
+    reserves : [Nat];
+    startDate : Time;
+    state : MarketState;
+    title : Text;
+    totalShares : Nat;
+    volume : Nat
+  };
+type MarketState =
+  {#any; #approved; #closed; #invalid; #open; #pending; #resolved : Nat};
+type MarketTx =
+  {
+    collateralType : CollateralType;
+    createdAt : Time;
+    dest : ?Nat;
+    fee : Nat64;
+    id : Nat32;
+    marketId : Nat32;
+    price : Nat64;
+    recv : Nat64;
+    sent : Nat64;
+    src : ?Nat
+  };
+type Notification = {#v0 : NotificationType0};
+type NotificationPost =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    id : Nat32;
+    image : ?Text;
+    images : [Text];
+    isRetweet : ?UserData;
+    market : Nat32;
+    parent : ?ParentData;
+    simpleMarket : Nat32
+  };
+type NotificationType0 = {#reply : NotificationPost};
+type ParentData = {author : UserData; id : Nat32};
+type ParentData__1 = {author : UserData; id : Nat32};
+type Payment =
+  {
+    amount : Nat64;
+    collateralType : CollateralType;
+    from : Text;
+    processed : Bool;
+    to : Text
+  };
+type PostStable =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    deleted : Bool;
+    id : Nat32;
+    image : ?Text;
+    isRetweet : ?UserData;
+    likes : [Like];
+    market : Nat32;
+    parent : ?ParentData__1;
+    replies : [Nat32];
+    retweet : ?Retweet;
+    retweeters : [UserData];
+    simpleMarket : Nat32
+  };
+type PostStable0 =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    deleted : Bool;
+    id : Nat32;
+    image : ?Text;
+    isRetweet : ?UserData;
+    likes : [Like];
+    market : Nat32;
+    parent : ?ParentData__1;
+    replies : [Nat32];
+    retweet : ?Retweet;
+    retweeters : [UserData];
+    simpleMarket : Nat32
+  };
+type PostStable1 =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    deleted : Bool;
+    id : Nat32;
+    image : ?Text;
+    images : [Text];
+    isRetweet : ?UserData;
+    likes : [Like];
+    market : Nat32;
+    parent : ?ParentData__1;
+    replies : [Nat32];
+    retweet : ?Retweet;
+    retweeters : [UserData];
+    simpleMarket : Nat32
+  };
+type PostStable2 =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    deleted : Bool;
+    hashtags : [Text];
+    id : Nat32;
+    image : ?Text;
+    images : [Text];
+    isRetweet : ?UserData;
+    likes : [Like];
+    market : Nat32;
+    mentions : [Text];
+    parent : ?ParentData__1;
+    replies : [Nat32];
+    retweet : ?Retweet;
+    retweeters : [UserData];
+    simpleMarket : Nat32
+  };
+type PostStable3 =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    deleted : Bool;
+    hashtags : [Text];
+    id : Nat32;
+    image : ?Text;
+    images : [Text];
+    isRetweet : ?UserData;
+    likes : [Like];
+    market : Nat32;
+    mentions : [Text];
+    parent : ?ParentData__1;
+    pdfs : [Text];
+    replies : [Nat32];
+    retweet : ?Retweet;
+    retweeters : [UserData];
+    simpleMarket : Nat32;
+    verified : Bool
+  };
+type Retweet =
+  {
+    author : UserData;
+    content : Text;
+    createdAt : Time;
+    id : Nat32;
+    parent : ?ParentData__1
+  };
+type SimpleMarketStable =
+  {
+    amount : Nat64;
+    author : ?UserData;
+    authorAmount : Nat64;
+    authorChoice : Nat;
+    authorResolution : Nat;
+    collateralType : CollateralType;
+    createdAt : Time;
+    description : Text;
+    id : Nat32;
+    matcher : ?UserData;
+    matcherAmount : Nat64;
+    matcherChoice : Nat;
+    matcherResolution : Nat;
+    modifiedAt : Time;
+    outcomes : [Text];
+    state : State
+  };
+type StablePost =
+  {
+    #v0 : PostStable0;
+    #v1 : PostStable1;
+    #v2 : PostStable2;
+    #v3 : PostStable3
+  };
+type StableState0 =
+  {
+    bets : [(Nat32, SimpleMarketStable)];
+    feed : [Nat32];
+    handles : [(Text, Text)];
+    images : [(Nat32, Text)];
+    markets : [(Nat32, MarketStable)];
+    payments : [Payment];
+    posts : [(Nat32, PostStable)];
+    users : [(Text, UserStable)]
+  };
+type StableState1 =
+  {
+    assets : [(Text, Asset)];
+    bets : [(Nat32, SimpleMarketStable)];
+    chunks : [(Nat, Chunk)];
+    feed : [Nat32];
+    handles : [(Text, Text)];
+    hashtags : [(Text, [Nat32])];
+    images : [(Nat32, Text)];
+    markets : [(Nat32, MarketStable)];
+    payments : [Payment];
+    posts : [(Nat32, PostStable)];
+    postsv : [(Nat32, StablePost)];
+    users : [(Text, UserStable)]
+  };
+type State =
+  {#cancelled; #closed; #matched; #open; #redeemed : Nat; #resolved : Nat};
+type Subaccount = Blob;
+type Time = Int;
+type UserData =
+  {handle : Text; name : Text; picture : Text; principal : Text};
+type UserMarket =
+  {
+    author : Bool;
+    balances : [Nat64];
+    brierScores : [BrierScore];
+    collateralType : CollateralType;
+    createdAt : Time;
+    labels : [Text];
+    marketId : Nat32;
+    modifiedAt : Time;
+    redeemed : Bool;
+    shares : Nat64;
+    spent : Nat64;
+    title : Text
+  };
+type UserStable =
+  {
+    #v0 : UserStable0;
+    #v1 : UserStable1;
+    #v2 : UserStable2;
+    #v3 : UserStable3;
+    #v4 : UserStable4
+  };
+type UserStable0 =
+  {
+    age : Nat;
+    balances : Balance;
+    bio : Text;
+    canister : Text;
+    city : Text;
+    comments : [CommentStable];
+    cover : Text;
+    createdAt : Time;
+    depositAddrs : DepositAddrs;
+    depositICPaddr : Text;
+    discord : Text;
+    expBalances : Balance;
+    followees : [Followee];
+    followers : [Follower];
+    handle : Text;
+    id : Text;
+    lastSeenAt : Time;
+    likes : [Nat32];
+    markets : [UserMarket];
+    minusBalances : Balance;
+    modifiedAt : Time;
+    name : Text;
+    number : Nat32;
+    picture : Text;
+    plusBalances : Balance;
+    posts : [Nat32];
+    replies : [Nat32];
+    retweets : [Nat32];
+    twitter : Text;
+    txs : [MarketTx];
+    website : Text
+  };
+type UserStable1 =
+  {
+    age : Nat;
+    balances : Balance;
+    bio : Text;
+    canister : Text;
+    city : Text;
+    comments : [CommentStable];
+    cover : Text;
+    createdAt : Time;
+    depositAddrs : DepositAddrs;
+    depositICPaddr : Text;
+    discord : Text;
+    expBalances : Balance;
+    followees : [Followee];
+    followers : [Follower];
+    handle : Text;
+    id : Text;
+    lastSeenAt : Time;
+    likes : [Nat32];
+    markets : [UserMarket];
+    minusBalances : Balance;
+    modifiedAt : Time;
+    name : Text;
+    number : Nat32;
+    picture : Text;
+    plusBalances : Balance;
+    posts : [Nat32];
+    replies : [Nat32];
+    retweets : [Nat32];
+    twitter : Text;
+    txs : [MarketTx];
+    website : Text
+  };
+type UserStable2 =
+  {
+    age : Nat;
+    balances : Balance;
+    bio : Text;
+    canister : Text;
+    city : Text;
+    comments : [CommentStable];
+    cover : Text;
+    createdAt : Time;
+    depositAddrs : DepositAddrs;
+    depositICPaddr : Text;
+    discord : Text;
+    expBalances : Balance;
+    followees : [Followee];
+    followers : [Follower];
+    handle : Text;
+    id : Text;
+    lastSeenAt : Time;
+    likes : [Nat32];
+    lockedBalances : Balance;
+    markets : [UserMarket];
+    minusBalances : Balance;
+    modifiedAt : Time;
+    name : Text;
+    number : Nat32;
+    picture : Text;
+    plusBalances : Balance;
+    posts : [Nat32];
+    replies : [Nat32];
+    retweets : [Nat32];
+    twitter : Text;
+    txs : [MarketTx];
+    website : Text
+  };
+type UserStable3 =
+  {
+    age : Nat;
+    balances : Balance;
+    bio : Text;
+    canister : Text;
+    city : Text;
+    comments : [CommentStable];
+    cover : Text;
+    createdAt : Time;
+    depositAddrs : DepositAddrs;
+    depositICPaddr : Text;
+    discord : Text;
+    expBalances : Balance;
+    followees : [Followee];
+    followers : [Follower];
+    handle : Text;
+    id : Text;
+    lastSeenAt : Time;
+    likes : [Nat32];
+    lockedBalances : Balance;
+    markets : [UserMarket];
+    minusBalances : Balance;
+    modifiedAt : Time;
+    name : Text;
+    notifications : [Notification];
+    notificationsSeen : Nat;
+    number : Nat32;
+    picture : Text;
+    plusBalances : Balance;
+    posts : [Nat32];
+    replies : [Nat32];
+    retweets : [Nat32];
+    twitter : Text;
+    txs : [MarketTx];
+    website : Text
+  };
+type UserStable4 =
+  {
+    age : Nat;
+    balances : Balance;
+    bio : Text;
+    canister : Text;
+    city : Text;
+    comments : [CommentStable];
+    cover : Text;
+    createdAt : Time;
+    depositAddrs : DepositAddrs;
+    depositICPaddr : Text;
+    discord : Text;
+    expBalances : Balance;
+    followees : [FolloweeStable];
+    followers : [FollowerStable];
+    handle : Text;
+    id : Text;
+    lastSeenAt : Time;
+    likes : [Nat32];
+    lockedBalances : Balance;
+    markets : [UserMarket];
+    minusBalances : Balance;
+    modifiedAt : Time;
+    name : Text;
+    notifications : [Notification];
+    notificationsSeen : Nat;
+    number : Nat32;
+    picture : Text;
+    plusBalances : Balance;
+    posts : [Nat32];
+    replies : [Nat32];
+    retweets : [Nat32];
+    twitter : Text;
+    txs : [MarketTx];
+    website : Text
+  };
+actor {
+  stable var anon : Text;
+  stable var nextBetId : Nat32;
+  stable var nextChunkID : Nat;
+  stable var nextMarketId : Nat32;
+  stable var nextPostId : Nat32;
+  stable var nextUserId : Nat32;
+  stable var queueError : Text;
+  stable var stableState : {#v0 : StableState0; #v1 : StableState1};
+  stable var updating : Bool
+};
