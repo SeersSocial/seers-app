@@ -19,7 +19,7 @@
   },
   "defaults": {
     "build": {
-      "packtool": "/Users/marcio/Downloads/vessel-macos sources"
+      "packtool": "vessel sources"
     }
   },
   "networks": {
