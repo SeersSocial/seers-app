@@ -13,7 +13,8 @@ ENV DFX_VERSION=0.14.3
 # Install a basic environment needed for our build tools
 RUN apt -yq update && \
     apt -yqq install --no-install-recommends curl ca-certificates \
-    build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake rsync
+    build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake \
+    git pkg-config
 
 # Install Node.js using nvm
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}"
