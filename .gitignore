@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.local
+users_backup
+posts_backup
+*.txt
+
+# filter out all "hidden" files and directories
+# (.git, .dfx, .*ignore, etc)
+#.*
