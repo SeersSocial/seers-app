@@ -2,5 +2,4 @@
 .*
 Dockerfile
 target
-frontend
 wasms
