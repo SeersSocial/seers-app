@@ -8,4 +8,4 @@ posts_backup
 
 # filter out all "hidden" files and directories
 # (.git, .dfx, .*ignore, etc)
-#.*
+.*
